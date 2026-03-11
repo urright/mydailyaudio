@@ -114,7 +114,7 @@ class HuggingFaceProvider(LLMProvider):
             raise ValueError(f"Unexpected HF response: {result}")
 
 class OpenRouterProvider(LLMProvider):
-    def __init__(self, api_key: str = None, model: str = "meta-llama/llama-3.3-70b-instruct"):
+    def __init__(self, api_key: str = None, model: str = "stepfun/step-3.5-flash:free"):
         self.api_key = api_key or os.getenv("OPENROUTER_API_KEY")
         self.model = model
         self.base_url = "https://openrouter.ai/api/v1"

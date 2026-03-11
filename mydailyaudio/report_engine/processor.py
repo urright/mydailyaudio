@@ -26,14 +26,12 @@ class ContentProcessor:
     def __init__(self, providers: list = None):
         """
         初始化内容处理器
-        providers: 按优先级排列的 LLMProvider 列表，例如 [OpenAIProvider(...), GroqProvider(...), FallbackProvider()]
-                    如果为 None，则使用默认混合策略
+        providers: 按优先级排列的 LLMProvider 列表，例如 [OpenRouterProvider(...), OllamaProvider(), FallbackProvider()]
+                    如果为 None，则使用默认混合策略（不含 OpenAI/Groq）
         """
         if providers is None:
-            # 默认混合策略：OpenAI → Groq → OpenRouter → Ollama → HuggingFace → Fallback
+            # 默认混合策略：OpenRouter → Ollama → HuggingFace → Fallback
             self.providers = [
-                OpenAIProvider(),
-                GroqProvider(),
                 OpenRouterProvider(),
                 OllamaProvider(),
                 HuggingFaceProvider(),

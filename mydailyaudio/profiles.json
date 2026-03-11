@@ -10,7 +10,7 @@
     "telegram_chat_id": "${TELEGRAM_CHAT_ID}",
     "schedule": "30 7 * *",
     "enabled": true,
-    "llm_providers": ["openrouter", "groq", "openai", "ollama", "huggingface"]
+    "llm_providers": ["openrouter", "ollama", "huggingface"]
   },
   {
     "name": "openclaw_ecosystem",
@@ -23,6 +23,6 @@
     "telegram_chat_id": "${TELEGRAM_CHAT_ID}",
     "schedule": "0 20 * * *",
     "enabled": true,
-    "llm_providers": ["openrouter", "groq", "openai"]
+    "llm_providers": ["openrouter", "ollama"]
   }
 ]

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>WhatsApp 连接二维码</title>
+  <style>
+    body {
+      background: #1a1a1a;
+      color: #fff;
+      font-family: 'Courier New', monospace;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+    .qr-container {
+      background: #000;
+      padding: 20px;
+      border-radius: 8px;
+      overflow-x: auto;
+      max-width: 100%;
+    }
+    pre {
+      font-size: 8px;
+      line-height: 1.2;
+      margin: 0;
+      white-space: pre;
+      font-weight: bold;
+    }
+    .instr {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #aaa;
+    }
+  </style>
+</head>
+<body>
+  <div style="text-align: center;">
+    <div class="instr">
+      用手机WhatsApp扫描这个二维码<br>
+      打开 WhatsApp → 菜单 → Linked Devices → Link a device
+    </div>
+    <div class="qr-container">
+      <pre id="qr"></pre>
+    </div>
+    <p style="color: #666; margin-top: 20px;">如果二维码不清晰，刷新页面重新生成</p>
+  </div>
+  <script>
+    const qrData = `▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+█ ▄▄▄▄▄ █▀▄█▄▀▄▄█▀▄ ▄▀▄█▄ ▄▀██  ▄██▀ █▄██  ▄▄█▄▄ ██ ▄▄▄▄▄ █
+█ █   █ █▀▀█ ▀▄███▀ ████▀▀▀███▀▀▀▄ ▀  ██▄█▄█▀█ ▄ ██ █   █ █
+█ █▄▄▄█ █▀▀▀█ ▄▄▄█▄▄▄ ▀ ▀ █ ▄▄▄ ▄▀ ▀█ ▄▀█▄    ▀▀▄██ █▄▄▄█ █
+█▄▄▄▄▄▄▄█▄▀ ▀ █ ▀▄█▄▀ ▀▄█ █ █▄█ ▀▄█ ▀▄▀▄█ █ ▀ ▀ ▀▄█▄▄▄▄▄▄▄█
+█ ▄▄  █▄▄ █▀ █ █▀▄▄  ▄▀▀▀▀ ▄    ▀█▀█▀▄ ▄█▀▀▀ ▀▄▄▀  █ ▀▄▀ ▀█
+█▄▀▀█▄▄▄█▄▀▀█▄▄  ▄▀ ▀▀▀ █▀ █▀█ ██▀ █ ▄▄▄▄▄▀▄███▄▄ █▄▀ ▀▀▀▀█
+█ █   ▀▄▀ ▄ ▄▄▄▄▄▄▀  ▄▀▄▄▀▄██▀▀█ ▀ █▀▄ █▀▀▀▀ ▀▄█ ▀ █▀█▀   █
+█ ▄▄█▄█▄▄█▄▄█ ▀▀▄█▀▄▄▄▀▄█▄▄█▀█▀▄ ▀█▄██▄█▀█▄█ ▀▀▀█▀█▄█ ▀ ▀▀█
+█ ▀▄▀█▀▄▄ ▄█ ▀▄▀█▄ ▄ ▄█▀  ▄▄▀ ▀ ▀█▀▄ ▄▀▄▀█▄  ▀▄▄▀▀▄▄▀█▄▄█▀█
+█▄█▄█  ▄ ▄ ▄▀█▀█▄▄▀ █▄▄▀ ▀▀▄█ █ ▄▄▀ ▀ ▀  ▄▄█▄▄█▀▄█▄  ▄▀  ██
+█▀█▀ ██▄ ██▀█▄▀█▄▀▄▄▄█ ▀▀▄▀ █▀▀ ▄▀█▄ ▄▀███  ▄▀▄█▄▀█▄█▀▄ ▀ █
+█ ▀▄▀▄ ▄  ▄▀ ▀█ ▄ ▀▄▄█ ▄▀█▀ █▀▀ ▄██ ▄▄▄▄   █▄   ▀  ▄ ▄▀▀▀██
+█ █▄ ▄ ▄ ▀█▄  █▀▄▄▄ █▄▄▀ ▀█▀ █ ▀▄ ▄    ▄▀█▀▀▄▀██▄▀ █▀▀▄ ▄ █
+██ ▀  ▄▄▄ ▄█ █▄▄  ▄█ ▀▄█▀▀▀ ▄▄▄  ▄ █▄  ██ ▄▀▄█  ▄ ▄▄▄ ▀ ▄▀█
+█▄▄▀█ █▄█ █▀▄▀██▄█▄▀ ▄▄█▀ ▀ █▄█  ███  ▀▄▀█▄  █▄▄█ █▄█  ▀▄ █
+█ █ ▄  ▄▄▄█  █▄▀▄ █▄ █▄█▄ █▄  ▄▄▄▀█▀ ▄ █▀▀ ▀▄        ▄█ ▄██
+█ ▄▄▀█▄▄ █▄█  ▀ ▄▄▀▄ ▄█▀▀▀██▄█▀ ▄█▀█▄▄█▄█▀▀ ██▄▄██▀▄▄█ ▀▄██
+██▄▄▀▄ ▄ ▀▄▀▀▀ █ ▄▄▀▀█▄ █▄ ▀▄ ▀ ▄█  ▀▄▄▄▀██▀▄▀ ▀▀▄▄▀▀▄   ██
+█▀ █▄ ▄▄▄██ █▄█▄▀█▄▄▀▀▀█▄ █ ▀█▀  ▀▄█▄▄▀██▀▄▀▄██▄▀▄ ▀▀▄▀▀█▀█
+█▀▀▄▀▀▄▄▄ ▄ ▀▀▀▀▀█▄█▀ ▀█▄ ▄ ▀█▀▄▀█ ▄▀ █▀ ▀█▀▄ ▄▄▀▀▄▀ ▀▀ ▄▄█
+█▀▀ ▀▀▀▄▀ ▀██▀█▀▄▄ ▄▄▄██  █▀█▄▀▀▀█▀█ ▄█▄▀█▄▀ ███▀▀▄█ ▄▀▀███
+█▄▄▀▄█▀▄ ▄▄█▄  █▀█▀  ▄▀ ▀▀█▀▀█▄ ▀█▀█ ▄▄▄▄█▀▀█ ▄▀▀▀ ██▀▀▀ ██
+█ ▀▄▄▀▄▄█▄ ██▄▄ ▄▄▀  █▀▄▀ ▄▄▄▄   ██▄▀▄▀██▀▀ ▄█▄▄▀▀█▀▄▄▄ ▄▀█
+█ ▀ ▀▀▄▄▀ ▄▄  ▄ ██▄▄█ ▄▄▄▀ ▀ ▄  █▄▄▀▀ ▄██ ▀ ██▄▄▄▄▄██▀   ██
+███████▄▄ ▄▄██▀ ▄▄▄ ▀▄█▀  █ ▄▄▄ ▄▀▄█▄ ▀▄▀█▄▀ ▀█▄█ ▄▄▄ █▄▀▀█
+█ ▄▄▄▄▄ █▄▄ ████ ▄▀ ▄▀███▄█ █▄█ ▀▀▄ █▀███▀▄█▄████ █▄█  ▀ ██
+█ █   █ █ ▀▀▄ ▄█▄▀▄ ▄██▀▀▄ ▄ ▄ ▄▀██▄   █▄▀ ▀▄██▄▀▄ ▄▄▄▀██▄█
+█ █▄▄▄█ █ ▄ █ █▄▄ ██▄███▀█▀███▀█▄▄▄ ▄▄▀██ ██▀▄▀ █  ▄█▀  ███
+█▄▄▄▄▄▄▄█▄▄█▄█▄▄█▄█▄█▄████▄█▄██▄▄▄▄▄▄▄▄███▄█▄█▄█▄█████▄▄▄██
+`.trim();
+
+    // 处理换行
+    const lines = qrData.split('\n');
+    const maxLineLength = Math.max(...lines.map(l => l.length));
+    const paddedLines = lines.map(l => l.padEnd(maxLineLength, ' '));
+
+    document.getElementById('qr').textContent = paddedLines.join('\n');
+
+    // 保持进程运行
+    console.log('QR page loaded. Scanning should work if your phone camera can read this ASCII art.');
+  </script>
+</body>
+</html>

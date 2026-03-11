@@ -1,0 +1,4 @@
+# YouTube channels for IT News profile
+# 格式：channel_id 或用户名
+# 例如：UCtfL219PB6B3jqQ6_Klwebsite8 (OpenAI)
+# 留空表示不使用 YouTube

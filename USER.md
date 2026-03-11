@@ -1,0 +1,8 @@
+- **Name:** JR
+- **What to call them:** JR
+- **Pronouns:** (not specified)
+- **Timezone:** America/Vancouver (PST)
+- **Notes:** 
+  - AI assistant: 小A
+  -Prefers professional, efficient communication style
+  - Interested in programming assistance

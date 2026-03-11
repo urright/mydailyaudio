@@ -1,0 +1,18 @@
+# OpenClaw Daily - IT News Profile
+# 偏向于公共媒体、AI与科技新闻，面向普通听众
+
+# AI & 科技媒体
+https://openai.com/blog/rss.xml
+https://huggingface.co/blog/feed/
+https://www.nvidia.com/en-us/feeds/blog/
+https://techcrunch.com/feed/
+https://www.theverge.com/rss/artificial-intelligence/index.xml
+https://ai.googleblog.com/feeds/posts/default
+https://deepmind.com/blog/rss
+https://venturebeat.com/category/ai/feed/
+https://www.wired.com/feed/rss
+https://www.technologyreview.com/topic/artificial-intelligence/feed
+https://www.zdnet.com/topic/artificial-intelligence/rss.xml
+
+# 可选：OpenClaw 官方 Releases（较技术，可少量收录）
+# https://github.com/openclaw/openclaw/releases.atom

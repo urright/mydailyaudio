@@ -10,7 +10,7 @@ from pathlib import Path
 from datetime import datetime
 
 from .collector import DataCollector
-from .processor import ContentProcessor, OpenAIProvider, GroqProvider, OpenRouterProvider, OllamaProvider, HuggingFaceProvider, FallbackProvider
+from .processor import ContentProcessor, OpenAIProvider, GroqProvider, OpenRouterProvider, OllamaProvider, HuggingFaceProvider, ArceeProvider, FallbackProvider
 from .audio_generator import AudioGenerator
 from .page_generator import PageGenerator
 from .telegram_sender import TelegramSender
@@ -65,6 +65,7 @@ def run_profile(profile, base_dir=None, repo_name="mydailyaudio", dry_run=False)
             'openrouter': lambda: OpenRouterProvider(),
             'ollama': lambda: OllamaProvider(),
             'huggingface': lambda: HuggingFaceProvider(),
+            'arcee': lambda: ArceeProvider(),
         }
         # 默认顺序
         default_order = ['openai', 'groq', 'ollama', 'huggingface']

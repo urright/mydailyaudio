@@ -1,0 +1,117 @@
+[
+  {
+    "model": "z-ai/glm-4.5-air:free",
+    "status": "error",
+    "error": "Error code: 429 - {'error': {'message': 'Rate limit exceeded: free-models-per-day. Add 10 credits to unlock 1000 free model requests per day', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit'"
+  },
+  {
+    "model": "nvidia/nemotron-3-nano-30b-a3b:free",
+    "status": "error",
+    "error": "Error code: 429 - {'error': {'message': 'Rate limit exceeded: free-models-per-day. Add 10 credits to unlock 1000 free model requests per day', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit'"
+  },
+  {
+    "model": "arcee-ai/trinity-mini:free",
+    "status": "error",
+    "error": "Error code: 429 - {'error': {'message': 'Rate limit exceeded: free-models-per-day. Add 10 credits to unlock 1000 free model requests per day', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit'"
+  },
+  {
+    "model": "nvidia/nemotron-nano-9b-v2:free",
+    "status": "error",
+    "error": "Error code: 429 - {'error': {'message': 'Rate limit exceeded: free-models-per-day. Add 10 credits to unlock 1000 free model requests per day', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit'"
+  },
+  {
+    "model": "nvidia/nemotron-nano-12b-v2-vl:free",
+    "status": "error",
+    "error": "Error code: 429 - {'error': {'message': 'Rate limit exceeded: free-models-per-day. Add 10 credits to unlock 1000 free model requests per day', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit'"
+  },
+  {
+    "model": "openai/gpt-oss-120b:free",
+    "status": "error",
+    "error": "Error code: 404 - {'error': {'message': 'No endpoints available matching your guardrail restrictions and data policy. Configure: https://openrouter.ai/settings/privacy', 'code': 404}}"
+  },
+  {
+    "model": "meta-llama/llama-3.3-70b-instruct:free",
+    "status": "error",
+    "error": "Error code: 429 - {'error': {'message': 'Provider returned error', 'code': 429, 'metadata': {'raw': 'meta-llama/llama-3.3-70b-instruct:free is temporarily rate-limited upstream. Please retry shortly, "
+  },
+  {
+    "model": "qwen/qwen3-coder:free",
+    "status": "error",
+    "error": "Error code: 429 - {'error': {'message': 'Provider returned error', 'code': 429, 'metadata': {'raw': 'qwen/qwen3-coder:free is temporarily rate-limited upstream. Please retry shortly, or add your own k"
+  },
+  {
+    "model": "qwen/qwen3-next-80b-a3b-instruct:free",
+    "status": "error",
+    "error": "Error code: 429 - {'error': {'message': 'Provider returned error', 'code': 429, 'metadata': {'raw': 'qwen/qwen3-next-80b-a3b-instruct:free is temporarily rate-limited upstream. Please retry shortly, o"
+  },
+  {
+    "model": "liquid/lfm-2.5-1.2b-thinking:free",
+    "status": "error",
+    "error": "Error code: 429 - {'error': {'message': 'Rate limit exceeded: free-models-per-day. Add 10 credits to unlock 1000 free model requests per day', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit'"
+  },
+  {
+    "model": "openai/gpt-oss-20b:free",
+    "status": "error",
+    "error": "Error code: 404 - {'error': {'message': 'No endpoints available matching your guardrail restrictions and data policy. Configure: https://openrouter.ai/settings/privacy', 'code': 404}}"
+  },
+  {
+    "model": "google/gemma-3-27b-it:free",
+    "status": "error",
+    "error": "Error code: 429 - {'error': {'message': 'Rate limit exceeded: free-models-per-day. Add 10 credits to unlock 1000 free model requests per day', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit'"
+  },
+  {
+    "model": "liquid/lfm-2.5-1.2b-instruct:free",
+    "status": "error",
+    "error": "Error code: 429 - {'error': {'message': 'Rate limit exceeded: free-models-per-day. Add 10 credits to unlock 1000 free model requests per day', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit'"
+  },
+  {
+    "model": "mistralai/mistral-small-3.1-24b-instruct:free",
+    "status": "error",
+    "error": "Error code: 429 - {'error': {'message': 'Provider returned error', 'code': 429, 'metadata': {'raw': 'mistralai/mistral-small-3.1-24b-instruct:free is temporarily rate-limited upstream. Please retry sh"
+  },
+  {
+    "model": "cognitivecomputations/dolphin-mistral-24b-venice-edition:free",
+    "status": "error",
+    "error": "Error code: 429 - {'error': {'message': 'Provider returned error', 'code': 429, 'metadata': {'raw': 'cognitivecomputations/dolphin-mistral-24b-venice-edition:free is temporarily rate-limited upstream."
+  },
+  {
+    "model": "qwen/qwen3-4b:free",
+    "status": "error",
+    "error": "Error code: 402 - {'error': {'message': 'Provider returned error', 'code': 402, 'metadata': {'raw': '{\"error\":\"API key USD spend limit exceeded. Your account may still have USD balance, but this API k"
+  },
+  {
+    "model": "meta-llama/llama-3.2-3b-instruct:free",
+    "status": "error",
+    "error": "Error code: 429 - {'error': {'message': 'Provider returned error', 'code': 429, 'metadata': {'raw': 'meta-llama/llama-3.2-3b-instruct:free is temporarily rate-limited upstream. Please retry shortly, o"
+  },
+  {
+    "model": "nousresearch/hermes-3-llama-3.1-405b:free",
+    "status": "error",
+    "error": "Error code: 429 - {'error': {'message': 'Provider returned error', 'code': 429, 'metadata': {'raw': 'nousresearch/hermes-3-llama-3.1-405b:free is temporarily rate-limited upstream. Please retry shortl"
+  },
+  {
+    "model": "google/gemma-3-4b-it:free",
+    "status": "error",
+    "error": "Error code: 429 - {'error': {'message': 'Rate limit exceeded: free-models-per-day. Add 10 credits to unlock 1000 free model requests per day', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit'"
+  },
+  {
+    "model": "google/gemma-3n-e4b-it:free",
+    "status": "error",
+    "error": "Error code: 429 - {'error': {'message': 'Rate limit exceeded: free-models-per-day. Add 10 credits to unlock 1000 free model requests per day', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit'"
+  },
+  {
+    "model": "google/gemma-3-12b-it:free",
+    "status": "error",
+    "error": "Error code: 429 - {'error': {'message': 'Rate limit exceeded: free-models-per-day. Add 10 credits to unlock 1000 free model requests per day', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit'"
+  },
+  {
+    "model": "google/gemma-3n-e2b-it:free",
+    "status": "error",
+    "error": "Error code: 429 - {'error': {'message': 'Rate limit exceeded: free-models-per-day. Add 10 credits to unlock 1000 free model requests per day', 'code': 429, 'metadata': {'headers': {'X-RateLimit-Limit'"
+  },
+  {
+    "model": "nvidia/llama-nemotron-embed-vl-1b-v2:free",
+    "status": "error",
+    "error": "Error code: 400 - {'error': {'message': 'nvidia/llama-nemotron-embed-vl-1b-v2:free is an embedding model and cannot be used with the chat/completions endpoint. Use the /embeddings endpoint instead.', "
+  }
+]

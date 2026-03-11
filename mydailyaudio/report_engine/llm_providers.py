@@ -65,7 +65,17 @@ class GroqProvider(LLMProvider):
             temperature=0.5,
             max_tokens=150
         )
-        return response.choices[0].message.content.strip().strip('"').strip()
+        message = response.choices[0].message
+        text = message.content
+        if text is None:
+            # StepFun/某些推理模型：实际输出在 reasoning 字段
+            try:
+                # 优先从 model_dump 获取
+                dump = message.model_dump()
+                text = dump.get('reasoning') or dump.get('reasoning_details', [{}])[0].get('text', '')
+            except Exception:
+                text = ""
+        return text.strip().strip('"').strip()
 
 class OllamaProvider(LLMProvider):
     def __init__(self, base_url: str = "http://localhost:11434", model: str = "llama3.3"):
@@ -130,13 +140,69 @@ class OpenRouterProvider(LLMProvider):
             model=self.model,
             messages=[{"role": "user", "content": prompt}],
             temperature=0.5,
-            max_tokens=150,
+            max_tokens=2000,  # 与生产环境完全一致
             extra_headers={
-                "HTTP-Referer": "https://github.com/urright/mydailyaudio",  # 可选：你的站点
-                "X-Title": "MyDailyAudio"  # 可选：应用名
+                "HTTP-Referer": "https://github.com/urright/mydailyaudio",
+                "X-Title": "MyDailyAudio"
             }
         )
-        return response.choices[0].message.content.strip().strip('"').strip()
+        message = response.choices[0].message
+        text = message.content
+        if text is None:
+            # StepFun/某些推理模型：实际输出在 reasoning 字段
+            try:
+                dump = message.model_dump()
+                reasoning = dump.get('reasoning') or ''
+                # 尝试从 reasoning 中提取最后的实际输出（通常最后一句或最后一段）
+                # 策略：按句号、问号、感叹号分割，取最后非空片段
+                import re
+                # 如果 reasoning 太长，取最后 200 字再分割
+                snippet = reasoning[-500:] if len(reasoning) > 500 else reasoning
+                # 分割句子
+                sentences = re.split(r'[。！？]+', snippet)
+                # 过滤空字符串，取最后一句
+                sentences = [s.strip() for s in sentences if s.strip()]
+                if sentences:
+                    text = sentences[-1]
+                else:
+                    text = reasoning.strip()
+            except Exception:
+                text = ""
+        return text.strip().strip('"').strip()
+
+class ArceeProvider(LLMProvider):
+    """Arcee Trinity Large via OpenRouter (free tier)"""
+    def __init__(self, api_key: str = None):
+        self.api_key = api_key or os.getenv("OPENROUTER_API_KEY")
+        self.model = "arcee-ai/trinity-large-preview:free"
+        self.base_url = "https://openrouter.ai/api/v1"
+
+    def name(self) -> str:
+        return f"arcee:{self.model}"
+
+    def summarize(self, title: str, content: str, prompt_template: str) -> str:
+        client = openai.OpenAI(api_key=self.api_key, base_url=self.base_url)
+        source_text = f"标题：{title}\n原文：{content}" if content else f"标题：{title}"
+        prompt = prompt_template + "\n\n" + source_text
+        response = client.chat.completions.create(
+            model=self.model,
+            messages=[{"role": "user", "content": prompt}],
+            temperature=0.5,
+            max_tokens=150,
+            extra_headers={
+                "HTTP-Referer": "https://github.com/urright/mydailyaudio",
+                "X-Title": "MyDailyAudio"
+            }
+        )
+        message = response.choices[0].message
+        text = message.content
+        if text is None:
+            try:
+                dump = message.model_dump()
+                text = dump.get('reasoning') or ''
+            except Exception:
+                text = ""
+        return text.strip().strip('"').strip()
 
 class FallbackProvider(LLMProvider):
     """最后降级：返回原摘要或简化的标题"""

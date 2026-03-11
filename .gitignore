@@ -1,0 +1,36 @@
+# Environment & secrets
+.env
+.env.*
+*.pem
+*.key
+secrets/
+
+# Memory files (contain sensitive logs)
+memory/
+.memory/
+
+# Project-specific ignores
+node_modules/
+venv/
+__pycache__/
+*.pyc
+.DS_Store
+
+# Build artifacts
+dist/
+build/
+*.egg-info/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+*.log
+logs/
+
+# Temporary
+tmp/
+temp/

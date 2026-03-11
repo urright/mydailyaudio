@@ -8,8 +8,9 @@
     "url_path": "it",
     "telegram_bot_token": "${TELEGRAM_BOT_TOKEN}",
     "telegram_chat_id": "${TELEGRAM_CHAT_ID}",
-    "schedule": "30 7 * * *",
-    "enabled": true
+    "schedule": "30 7 * *",
+    "enabled": true,
+    "llm_providers": ["openrouter", "groq", "openai", "ollama", "huggingface"]
   },
   {
     "name": "openclaw_ecosystem",
@@ -21,6 +22,7 @@
     "telegram_bot_token": "${TELEGRAM_BOT_TOKEN}",
     "telegram_chat_id": "${TELEGRAM_CHAT_ID}",
     "schedule": "0 20 * * *",
-    "enabled": true
+    "enabled": true,
+    "llm_providers": ["openrouter", "groq", "openai"]
   }
 ]

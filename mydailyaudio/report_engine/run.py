@@ -10,7 +10,7 @@ from pathlib import Path
 from datetime import datetime
 
 from .collector import DataCollector
-from .processor import ContentProcessor
+from .processor import ContentProcessor, OpenAIProvider, GroqProvider, OpenRouterProvider, OllamaProvider, HuggingFaceProvider, FallbackProvider
 from .audio_generator import AudioGenerator
 from .page_generator import PageGenerator
 from .telegram_sender import TelegramSender
@@ -55,8 +55,33 @@ def run_profile(profile, base_dir=None, repo_name="mydailyaudio", dry_run=False)
         print("❌ No new entries collected")
         return {"status": "empty", "message": "No new entries"}
 
-    # 2. Process
-    processor = ContentProcessor()
+    # 2. Build provider list from profile config or environment
+    # profile 可包含 'llm_providers': ['openai', 'groq', 'ollama', 'huggingface']
+    # 顺序即为优先级
+    def build_providers(profile):
+        provider_map = {
+            'openai': lambda: OpenAIProvider(),
+            'groq': lambda: GroqProvider(),
+            'openrouter': lambda: OpenRouterProvider(),
+            'ollama': lambda: OllamaProvider(),
+            'huggingface': lambda: HuggingFaceProvider(),
+        }
+        # 默认顺序
+        default_order = ['openai', 'groq', 'ollama', 'huggingface']
+        order = profile.get('llm_providers', default_order)
+        providers = []
+        for key in order:
+            if key in provider_map:
+                try:
+                    providers.append(provider_map[key]())
+                except Exception as e:
+                    print(f"⚠️ 跳过提供商 {key}: {e}")
+        if not providers:
+            providers = [FallbackProvider()]
+        return providers
+
+    providers = build_providers(profile)
+    processor = ContentProcessor(providers=providers)
     categorized = processor.process_all(entries)
     total_items = sum(len(v) for v in categorized.values())
 
